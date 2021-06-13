@@ -7,7 +7,9 @@
     "start": "node server/index.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack --watch --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "pm2": "pm2 start server",
+    "stop": "pm2 stop server"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "pm2": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
