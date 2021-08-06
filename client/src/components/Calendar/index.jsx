@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import Weekdays from './Weekdays';
 import Days from './Days';
+import MonthNav from './MonthNav';
 
 const weekdays = moment.weekdays(); // [Sunday, Monday]
 const weekdaysShort = moment.weekdaysShort(); // [Sun, Mon]
@@ -12,10 +13,7 @@ const monthsShort = moment.monthsShort(); // [Jan, Feb]
 
 class Calendar extends React.Component {
   constructor(props) {
-    // console.log(weekdays, weekdaysShort, months);
     super(props);
-    // this.width = props.width || '350px';
-    // this.style = props.style || {};
     this.state = {
       moment: moment(),
       today: moment(),
@@ -49,53 +47,6 @@ class Calendar extends React.Component {
     return firstDay; // Day of week as number 0 - sun, 1 - mon
   }
 
-  // calendarDays() {
-  //   const daysIn = [];
-  //   for (let d = 1; d <= this.daysInMonth(); d++) {
-  //     const className = d === this.currentDate() ? "day current-date" : "day";
-  //     daysIn.push(
-  //       <td key={d} className={className}>
-  //         <span>{d}</span>
-  //       </td>
-  //     );
-  //   }
-  //   return daysIn;
-  // }
-
-  // blankCalendarDays() {
-  //   const blanks = [];
-  //   for (let i = 0; i < this.firstDayOfMonth(); i++) {
-  //     blanks.push(
-  //       <td className="empty-days">{""}</td>
-  //     );
-  //   }
-  //   return blanks;
-  // }
-
-  // allCalendarDays() {
-  //   const total = [...this.blankCalendarDays(), ...this.calendarDays()];
-  //   const rows = [];
-  //   let cells = [];
-  //   total.forEach((day, i) => {
-  //     if (i % 7 !== 0) {
-  //       cells.push(day);
-  //     } else {
-  //       rows.push([...cells]);
-  //       cells = [];
-  //       cells.push(day);
-  //     }
-  //     if (i === total.length - 1) {
-  //       rows.push([...cells]);
-  //     }
-  //   });
-  //   const trElems = rows.map((d, i) => (
-  //     <tr key={i * 100}>
-  //       {d}
-  //     </tr>
-  //   ));
-  //   return trElems;
-  // }
-
   render() {
     const daysInMonth = this.daysInMonth();
     const firstDay = this.firstDayOfMonth();
@@ -106,6 +57,9 @@ class Calendar extends React.Component {
         <table className="calendar">
           <thead>
             <tr className="calendar-header">
+              <td colSpan="5">
+                <MonthNav months={months} currentMonth={this.month()} />
+              </td>
             </tr>
           </thead>
           <tbody>
