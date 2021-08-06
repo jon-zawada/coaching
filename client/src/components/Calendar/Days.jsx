@@ -17,6 +17,7 @@ function blankCalendarDays(firstDay) {
   const blanks = [];
   for (let i = 0; i < firstDay; i++) {
     blanks.push(
+      // eslint-disable-next-line react/jsx-curly-brace-presence
       <td className="empty-days">{""}</td>
     );
   }
@@ -31,7 +32,7 @@ function days(firstDay, daysInMonth, currentDay) {
     if (i % 7 !== 0) {
       cells.push(day);
     } else {
-      rows.push([...cells]);
+      if (cells.length) rows.push([...cells]);
       cells = [];
       cells.push(day);
     }
