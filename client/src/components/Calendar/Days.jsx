@@ -1,12 +1,6 @@
 import React from 'react';
 
-const Days = ({ daysInMonth, firstDay, currentDay }) => {
-  return (
-    allCalendarDays(firstDay, daysInMonth, currentDay)
-  )
-}
-
-function calendarDays(daysInMonth, currentDay) {
+function validCalendarDays(daysInMonth, currentDay) {
   const daysIn = [];
   for (let d = 1; d <= daysInMonth; d++) {
     const className = d === currentDay ? "day current-date" : "day";
@@ -29,8 +23,8 @@ function blankCalendarDays(firstDay) {
   return blanks;
 }
 
-function allCalendarDays(firstDay, daysInMonth, currentDay) {
-  const total = [...blankCalendarDays(firstDay), ...calendarDays(daysInMonth, currentDay)];
+function days(firstDay, daysInMonth, currentDay) {
+  const total = [...blankCalendarDays(firstDay), ...validCalendarDays(daysInMonth, currentDay)];
   const rows = [];
   let cells = [];
   total.forEach((day, i) => {
@@ -50,8 +44,9 @@ function allCalendarDays(firstDay, daysInMonth, currentDay) {
       {d}
     </tr>
   ));
-  console.log(trElems, 'hi from insiade Days');
   return trElems;
 }
+
+const Days = ({ daysInMonth, firstDay, currentDay }) => (days(firstDay, daysInMonth, currentDay));
 
 export default Days;
