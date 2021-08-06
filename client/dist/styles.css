@@ -7,3 +7,15 @@ body{
   overflow: hidden;
   margin: 0;
 }
+
+.calendar {
+  border: solid red 2px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.weekdays {
+  border: solid blue 2px;
+}
