@@ -3,6 +3,7 @@ import React from 'react';
 import moment from 'moment';
 
 import Weekdays from './Weekdays';
+import Days from './Days';
 
 const weekdays = moment.weekdays(); // [Sunday, Monday]
 const weekdaysShort = moment.weekdaysShort(); // [Sun, Mon]
@@ -96,7 +97,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    // console.log(this.allCalendarDays());
     return (
       <div className="calendar-container">
         <h2>Calendar</h2>
@@ -107,7 +107,8 @@ class Calendar extends React.Component {
           </thead>
           <tbody>
             <Weekdays weekdays={weekdaysShort} />
-            {this.allCalendarDays()}
+            {/* {this.allCalendarDays()} */}
+            <Days daysInMonth={this.daysInMonth()} firstDay={this.firstDayOfMonth()} currentDay={this.currentDate()}/>
           </tbody>
         </table>
       </div>
