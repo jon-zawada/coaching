@@ -40,7 +40,7 @@ function days(firstDay, daysInMonth, currentDay) {
     }
   });
   const trElems = rows.map((d, i) => (
-    <tr key={i*100}>
+    <tr key={i * 100}>
       {d}
     </tr>
   ));
