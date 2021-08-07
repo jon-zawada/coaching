@@ -1,10 +1,10 @@
 import React from 'react';
 import MonthList from './MonthList';
 
-const MonthNav = ({ months, currentMonth }) => (
-  <span className="label-month">
+const MonthNav = ({ show, months, currentMonth, popUpHandler }) => (
+  <span className="label-month" onClick={popUpHandler} name="showMonthPopup">
     {currentMonth}
-    <MonthList months={months} />
+    {show ? <MonthList months={months} /> : null}
   </span>
 );
 
