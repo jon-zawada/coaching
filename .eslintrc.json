@@ -19,6 +19,9 @@
         "react"
     ],
     "rules": {
-        "comma-dangle": 0
+        "comma-dangle": 0,
+        "no-plusplus": 0,
+        "quotes": 0,
+        "react/no-array-index-key": 0
     }
 }
