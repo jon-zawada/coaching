@@ -23,11 +23,7 @@ class Calendar extends React.Component {
     };
     this.popUpHandler = this.popUpHandler.bind(this);
     this.setMonth = this.setMonth.bind(this);
-    this.onSelectChange = this.onSelectChange.bind(this);
-  }
-
-  onSelectChange(e, month) {
-    this.setMonth(month);
+    this.monthChange = this.monthChange.bind(this);
   }
 
   setMonth(month) {
@@ -37,6 +33,16 @@ class Calendar extends React.Component {
     newContext = moment(newContext).set("month", monthIndex);
     this.setState({
       moment: newContext
+    });
+  }
+
+  monthChange(event) {
+    const name = event.target.className;
+    let newMonth = { ...this.state.moment };
+    if (name === 'sub-month') newMonth = moment(newMonth).subtract(1, 'M');
+    if (name === 'add-month') newMonth = moment(newMonth).add(1, 'M');
+    this.setState({
+      moment: newMonth
     });
   }
 
@@ -80,7 +86,7 @@ class Calendar extends React.Component {
     const currentDay = this.currentDate();
     const month = this.month();
     const year = this.year();
-    const { showMonthPopup, showYearPopup } = this.state;
+    const { showMonthPopup } = this.state;
     return (
       <div className="calendar-container">
         <h2>Calendar</h2>
@@ -88,20 +94,20 @@ class Calendar extends React.Component {
           <thead>
             <tr className="calendar-header">
               <td colSpan="5">
+                <span className="sub-month" onClick={this.monthChange}>{'<-'}</span>
                 <MonthNav
                   show={showMonthPopup}
                   months={months}
                   currentMonth={month}
                   popUpHandler={this.popUpHandler}
-                  onSelectChange={this.onSelectChange}
+                  setMonth={this.setMonth}
                 />
                 {/* remove this */}
                 {' '}
                 <YearNav
                   currentYear={year}
-                  popUpHandler={this.popUpHandler}
-                  show={showYearPopup}
                 />
+                <span className="add-month" onClick={this.monthChange}>{'->'}</span>
               </td>
             </tr>
           </thead>
