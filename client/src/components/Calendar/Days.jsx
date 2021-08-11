@@ -18,7 +18,7 @@ function blankCalendarDays(firstDay) {
   for (let i = 0; i < firstDay; i++) {
     blanks.push(
       // eslint-disable-next-line react/jsx-curly-brace-presence
-      <td className="empty-days">{""}</td>
+      <td className="empty-days" key={i * 523789}>{""}</td>
     );
   }
   return blanks;

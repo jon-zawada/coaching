@@ -42,6 +42,7 @@ class Calendar extends React.Component {
 
   popUpHandler(event) {
     const name = event.target.getAttribute('name');
+    if (!name) return;
     const showMonths = this.state[name];
     this.setState({
       [name]: !showMonths
@@ -79,7 +80,7 @@ class Calendar extends React.Component {
     const currentDay = this.currentDate();
     const month = this.month();
     const year = this.year();
-    const { showMonthPopup } = this.state;
+    const { showMonthPopup, showYearPopup } = this.state;
     return (
       <div className="calendar-container">
         <h2>Calendar</h2>
@@ -98,6 +99,8 @@ class Calendar extends React.Component {
                 {' '}
                 <YearNav
                   currentYear={year}
+                  popUpHandler={this.popUpHandler}
+                  show={showYearPopup}
                 />
               </td>
             </tr>
