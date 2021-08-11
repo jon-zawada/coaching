@@ -5,6 +5,7 @@ import moment from 'moment';
 import Weekdays from './Weekdays';
 import Days from './Days';
 import MonthNav from './MonthNav';
+import YearNav from './YearNav';
 
 const weekdays = moment.weekdays(); // [Sunday, Monday]
 const weekdaysShort = moment.weekdaysShort(); // [Sun, Mon]
@@ -77,6 +78,7 @@ class Calendar extends React.Component {
     const firstDay = this.firstDayOfMonth();
     const currentDay = this.currentDate();
     const month = this.month();
+    const year = this.year();
     const { showMonthPopup } = this.state;
     return (
       <div className="calendar-container">
@@ -91,6 +93,11 @@ class Calendar extends React.Component {
                   currentMonth={month}
                   popUpHandler={this.popUpHandler}
                   onSelectChange={this.onSelectChange}
+                />
+                {/* remove this */}
+                {' '}
+                <YearNav
+                  currentYear={year}
                 />
               </td>
             </tr>
