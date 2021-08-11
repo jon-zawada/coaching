@@ -24,6 +24,7 @@ class Calendar extends React.Component {
     this.popUpHandler = this.popUpHandler.bind(this);
     this.setMonth = this.setMonth.bind(this);
     this.monthChange = this.monthChange.bind(this);
+    this.yearChange = this.yearChange.bind(this);
   }
 
   setMonth(month) {
@@ -43,6 +44,16 @@ class Calendar extends React.Component {
     if (name === 'add-month') newMonth = moment(newMonth).add(1, 'M');
     this.setState({
       moment: newMonth
+    });
+  }
+
+  yearChange(event) {
+    const name = event.target.className;
+    let newYear = { ...this.state.moment };
+    if (name === 'sub-year') newYear = moment(newYear).subtract(1, 'Y');
+    if (name === 'add-year') newYear = moment(newYear).add(1, 'Y');
+    this.setState({
+      moment: newYear
     });
   }
 
@@ -94,6 +105,7 @@ class Calendar extends React.Component {
           <thead>
             <tr className="calendar-header">
               <td colSpan="5">
+              <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
                 <span className="sub-month" onClick={this.monthChange}>{'<-'}</span>
                 <MonthNav
                   show={showMonthPopup}
@@ -108,6 +120,7 @@ class Calendar extends React.Component {
                   currentYear={year}
                 />
                 <span className="add-month" onClick={this.monthChange}>{'->'}</span>
+                <span className="add-year" onClick={this.yearChange}>{'->>'}</span>
               </td>
             </tr>
           </thead>
