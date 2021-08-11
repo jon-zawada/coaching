@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MonthList = ({ months }) => {
+const MonthList = ({ months, onSelectChange }) => {
   const popup = months.map((month) => (
     <div key={month}>
-      <a href="#">
+      <a href="#" onClick={(e) => {onSelectChange(e, month)}}>
         {month}
       </a>
     </div>

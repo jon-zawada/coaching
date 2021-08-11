@@ -21,12 +21,29 @@ class Calendar extends React.Component {
       showYearPopup: false,
     };
     this.popUpHandler = this.popUpHandler.bind(this);
+    this.setMonth = this.setMonth.bind(this);
+    this.onSelectChange = this.onSelectChange.bind(this);
+  }
+
+  onSelectChange(e, month) {
+    this.setMonth(month);
+  }
+
+  setMonth(month) {
+    // can be optimized
+    const monthIndex = months.indexOf(month);
+    let newContext = { ...this.state.moment };
+    newContext = moment(newContext).set("month", monthIndex);
+    this.setState({
+      moment: newContext
+    });
   }
 
   popUpHandler(event) {
     const name = event.target.getAttribute('name');
+    const showMonths = this.state[name];
     this.setState({
-      [name]: !this.state[name]
+      [name]: !showMonths
     });
   }
 
@@ -68,13 +85,23 @@ class Calendar extends React.Component {
           <thead>
             <tr className="calendar-header">
               <td colSpan="5">
-                <MonthNav show={showMonthPopup} months={months} currentMonth={month} popUpHandler={this.popUpHandler} />
+                <MonthNav
+                  show={showMonthPopup}
+                  months={months}
+                  currentMonth={month}
+                  popUpHandler={this.popUpHandler}
+                  onSelectChange={this.onSelectChange}
+                />
               </td>
             </tr>
           </thead>
           <tbody>
             <Weekdays weekdays={weekdaysShort} />
-            <Days daysInMonth={daysInMonth} firstDay={firstDay} currentDay={currentDay} />
+            <Days
+              daysInMonth={daysInMonth}
+              firstDay={firstDay}
+              currentDay={currentDay}
+            />
           </tbody>
         </table>
       </div>
