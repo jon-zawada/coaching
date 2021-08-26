@@ -1,13 +1,9 @@
 body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* height: 100vh; */
   overflow: hidden;
   margin: 0;
 }
 
+/* CALENDAR COMPONENTS */
 .calendar {
   border: solid red 2px;
 }
@@ -18,4 +14,42 @@ table {
 
 .weekdays {
   border: solid blue 2px;
+}
+
+/* NAV ELEMENTS */
+.nav-container {
+  background-color: hsl(160, 61%, 59%);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  margin: 0 10%;
+  font-size: 25px;
+
+}
+
+.nav-list {
+  flex:1;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-right: 10%;
+  justify-content: space-evenly;
+}
+
+.nav-list li {
+  padding: 10px;
+}
+
+.nav-list li a{
+  color: hsl(0, 0%, 0%);
+  text-decoration: none;
+  text-transform: uppercase;
 }
