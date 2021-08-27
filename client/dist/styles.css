@@ -1,23 +1,49 @@
 body{
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0;
 }
 
-h2 {
-
-}
-
 /* CALENDAR COMPONENTS */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .calendar {
-  border: solid red 2px;
+  border: 1px solid #999;
+  border-collapse: collapse; /* take out later */
 }
 
-table {
-  border-collapse: collapse;
+.calendar-header {
+  text-align: center;
 }
 
-.weekdays {
-  border: solid blue 2px;
+.month-year-container {
+  padding: 15px;
+  background-color: purple;
+}
+
+.week-day {
+  border: 1px solid #999;
+  height: 5em;
+  width: 5em;
+  padding: 5px;
+  text-align: center;
+}
+
+
+.day {
+  border: 1px solid #999;
+  height: 5em;
+  width: 5em;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.current-date {
+  background-color: red;
 }
 
 /* NAV ELEMENTS */
@@ -74,8 +100,6 @@ table {
   justify-content: space-between;
 }
 
-h1 {
-}
 
 #book {
   margin-bottom: 8%;
