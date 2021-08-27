@@ -7,6 +7,10 @@ const DIST_DIR = path.join(__dirname, '..', 'client', 'dist');
 
 app.use(express.static(DIST_DIR));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
+});
+
 app.listen(PORT, () => {
-  console.log(`Example app listening at ${PORT}`);
+  console.log(`Coaching listening at ${PORT}`);
 });
