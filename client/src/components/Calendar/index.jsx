@@ -104,7 +104,7 @@ class Calendar extends React.Component {
         <table className="calendar">
           <thead>
             <tr className="calendar-header">
-              <td colSpan="5">
+              <td className="month-year-container"colSpan="7">
               <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
                 <span className="sub-month" onClick={this.monthChange}>{'<-'}</span>
                 <MonthNav

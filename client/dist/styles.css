@@ -15,6 +15,14 @@ body{
   border-collapse: collapse; /* take out later */
 }
 
+.calendar-header {
+  text-align: center;
+}
+
+.month-year-container {
+  padding: 15px;
+  background-color: purple;
+}
 
 .week-day {
   border: 1px solid #999;
@@ -31,6 +39,7 @@ body{
   width: 5em;
   padding: 5px;
   text-align: center;
+  cursor: pointer;
 }
 
 .current-date {
@@ -91,8 +100,6 @@ body{
   justify-content: space-between;
 }
 
-h1 {
-}
 
 #book {
   margin-bottom: 8%;
