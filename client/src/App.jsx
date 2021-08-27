@@ -11,8 +11,10 @@ function App() {
       <Nav />
       <h2>Welcome to Jangos Coaching!</h2>
       <h3>Date: { new Date().toDateString() }</h3>
-      <Route path="/" component={Home} />
-      <Route path="/booking" component={Booking} />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/booking" component={Booking} />
+      </Switch>
     </Router>
   );
 }
