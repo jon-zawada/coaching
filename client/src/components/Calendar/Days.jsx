@@ -1,13 +1,15 @@
 import React from 'react';
+import Day from './Day';
 
 function validCalendarDays(daysInMonth, currentDay) {
   const daysIn = [];
   for (let d = 1; d <= daysInMonth; d++) {
     const className = d === currentDay ? "day current-date" : "day";
     daysIn.push(
-      <td key={d} className={className}>
-        <span>{d}</span>
-      </td>
+      // <td key={d} className={className}>
+      //   <span>{d}</span>
+      // </td>
+      <Day key={d} d={d} className={className} />
     );
   }
   return daysIn;
