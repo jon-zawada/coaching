@@ -34,6 +34,6 @@ const Modal = ({ open, children, onClose }) => {
     </>,
     document.getElementById('portal')
   );
-}
+};
 
 export default Modal;

@@ -7,10 +7,10 @@ import Days from './Days';
 import MonthNav from './MonthNav';
 import YearNav from './YearNav';
 
-const weekdays = moment.weekdays(); // [Sunday, Monday]
+// const weekdays = moment.weekdays(); // [Sunday, Monday]
 const weekdaysShort = moment.weekdaysShort(); // [Sun, Mon]
-const months = moment.months(); // [January, February]
-const monthsShort = moment.monthsShort(); // [Jan, Feb]
+// const months = moment.months(); // [January, February]
+// const monthsShort = moment.monthsShort(); // [Jan, Feb]
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -73,22 +73,18 @@ class Calendar extends React.Component {
     const currentDay = this.currentDate();
     const month = this.month();
     const year = this.year();
-    const { showMonthPopup } = this.state;
     return (
       <div className="calendar-container">
         <h2>Calendar</h2>
         <table className="calendar">
           <thead>
             <tr className="calendar-header">
-              <td className="month-year-container"colSpan="7">
-              <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
+              <td className="month-year-container" colSpan="7">
+                <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
                 <span className="sub-month" onClick={this.monthChange}>{'<-'}</span>
                 <MonthNav currentMonth={month} />
-                {/* remove this */}
                 {' '}
-                <YearNav
-                  currentYear={year}
-                />
+                <YearNav currentYear={year} />
                 <span className="add-month" onClick={this.monthChange}>{'->'}</span>
                 <span className="add-year" onClick={this.yearChange}>{'->>'}</span>
               </td>
