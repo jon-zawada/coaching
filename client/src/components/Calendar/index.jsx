@@ -16,25 +16,10 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      moment: moment(),
-      today: moment(),
-      showMonthPopup: false,
-      showYearPopup: false,
+      moment: moment()
     };
-    this.popUpHandler = this.popUpHandler.bind(this);
-    this.setMonth = this.setMonth.bind(this);
     this.monthChange = this.monthChange.bind(this);
     this.yearChange = this.yearChange.bind(this);
-  }
-
-  setMonth(month) {
-    // can be optimized
-    const monthIndex = months.indexOf(month);
-    let newContext = { ...this.state.moment };
-    newContext = moment(newContext).set("month", monthIndex);
-    this.setState({
-      moment: newContext
-    });
   }
 
   monthChange(event) {
@@ -54,15 +39,6 @@ class Calendar extends React.Component {
     if (name === 'add-year') newYear = moment(newYear).add(1, 'Y');
     this.setState({
       moment: newYear
-    });
-  }
-
-  popUpHandler(event) {
-    const name = event.target.getAttribute('name');
-    if (!name) return;
-    const showMonths = this.state[name];
-    this.setState({
-      [name]: !showMonths
     });
   }
 
@@ -107,13 +83,7 @@ class Calendar extends React.Component {
               <td className="month-year-container"colSpan="7">
               <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
                 <span className="sub-month" onClick={this.monthChange}>{'<-'}</span>
-                <MonthNav
-                  show={showMonthPopup}
-                  months={months}
-                  currentMonth={month}
-                  popUpHandler={this.popUpHandler}
-                  setMonth={this.setMonth}
-                />
+                <MonthNav currentMonth={month} />
                 {/* remove this */}
                 {' '}
                 <YearNav
