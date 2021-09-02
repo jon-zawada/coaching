@@ -133,3 +133,20 @@ body{
   font-size: 1.5rem;
   padding: 10%;
 }
+
+/* MODAL */
+
+.available-times {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.available-times li {
+  padding: 5px; 
+  border: solid red 1px;
+  margin: 5px;
+}
