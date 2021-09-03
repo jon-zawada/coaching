@@ -1,6 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AvailableTimes from './AvailableTimes';
+import { times } from '../../../../db/times';
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -22,18 +24,24 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
+const BUTTON_STYLES = {
+  position: "absolute",
+  top: 5,
+  right: 5
+};
+
 const Modal = ({ open, children, onClose }) => {
   if (!open) return null;
   return ReactDOM.createPortal(
     <>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
-        <button onClick={onClose}>Close Modal</button>
-        {children}
+        <button style={BUTTON_STYLES} onClick={onClose}>Close Modal</button>
+        <AvailableTimes times={times} />
       </div>
     </>,
     document.getElementById('portal')
   );
-}
+};
 
 export default Modal;

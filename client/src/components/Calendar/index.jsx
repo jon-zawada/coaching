@@ -7,34 +7,19 @@ import Days from './Days';
 import MonthNav from './MonthNav';
 import YearNav from './YearNav';
 
-const weekdays = moment.weekdays(); // [Sunday, Monday]
+// const weekdays = moment.weekdays(); // [Sunday, Monday]
 const weekdaysShort = moment.weekdaysShort(); // [Sun, Mon]
-const months = moment.months(); // [January, February]
-const monthsShort = moment.monthsShort(); // [Jan, Feb]
+// const months = moment.months(); // [January, February]
+// const monthsShort = moment.monthsShort(); // [Jan, Feb]
 
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      moment: moment(),
-      today: moment(),
-      showMonthPopup: false,
-      showYearPopup: false,
+      moment: moment()
     };
-    this.popUpHandler = this.popUpHandler.bind(this);
-    this.setMonth = this.setMonth.bind(this);
     this.monthChange = this.monthChange.bind(this);
     this.yearChange = this.yearChange.bind(this);
-  }
-
-  setMonth(month) {
-    // can be optimized
-    const monthIndex = months.indexOf(month);
-    let newContext = { ...this.state.moment };
-    newContext = moment(newContext).set("month", monthIndex);
-    this.setState({
-      moment: newContext
-    });
   }
 
   monthChange(event) {
@@ -54,15 +39,6 @@ class Calendar extends React.Component {
     if (name === 'add-year') newYear = moment(newYear).add(1, 'Y');
     this.setState({
       moment: newYear
-    });
-  }
-
-  popUpHandler(event) {
-    const name = event.target.getAttribute('name');
-    if (!name) return;
-    const showMonths = this.state[name];
-    this.setState({
-      [name]: !showMonths
     });
   }
 
@@ -97,28 +73,18 @@ class Calendar extends React.Component {
     const currentDay = this.currentDate();
     const month = this.month();
     const year = this.year();
-    const { showMonthPopup } = this.state;
     return (
       <div className="calendar-container">
         <h2>Calendar</h2>
         <table className="calendar">
           <thead>
             <tr className="calendar-header">
-              <td className="month-year-container"colSpan="7">
-              <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
+              <td className="month-year-container" colSpan="7">
+                <span className="sub-year" onClick={this.yearChange}>{'<<-'}</span>
                 <span className="sub-month" onClick={this.monthChange}>{'<-'}</span>
-                <MonthNav
-                  show={showMonthPopup}
-                  months={months}
-                  currentMonth={month}
-                  popUpHandler={this.popUpHandler}
-                  setMonth={this.setMonth}
-                />
-                {/* remove this */}
+                <MonthNav currentMonth={month} />
                 {' '}
-                <YearNav
-                  currentYear={year}
-                />
+                <YearNav currentYear={year} />
                 <span className="add-month" onClick={this.monthChange}>{'->'}</span>
                 <span className="add-year" onClick={this.yearChange}>{'->>'}</span>
               </td>
