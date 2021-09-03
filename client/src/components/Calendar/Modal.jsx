@@ -24,13 +24,19 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
+const BUTTON_STYLES = {
+  position: "absolute",
+  top: 5,
+  right: 5
+};
+
 const Modal = ({ open, children, onClose }) => {
   if (!open) return null;
   return ReactDOM.createPortal(
     <>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
-        <button onClick={onClose}>Close Modal</button>
+        <button style={BUTTON_STYLES} onClick={onClose}>Close Modal</button>
         <AvailableTimes times={times} />
       </div>
     </>,
