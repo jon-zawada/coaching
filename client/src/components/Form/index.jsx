@@ -1,5 +1,6 @@
 import React from 'react';
 import AvailableTimes from './AvailableTimes';
+import ClientInfo from './ClientInfo';
 import { times } from '../../../../db/times';
 
 class Form extends React.Component {
@@ -7,11 +8,12 @@ class Form extends React.Component {
     super();
     this.state = {
       step: 1,
+      name: '',
       ign: '',
+      discord: '',
       region: '',
       date: '',
       time: '',
-      discord: '',
     };
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
@@ -35,16 +37,16 @@ class Form extends React.Component {
     });
   }
 
-  changeHandler(event, prop) {
+  changeHandler(event) {
     event.preventDefault();
+    const { name, value } = event.target;
     this.setState({
-      [prop]: event.target.value
+      [name]: value
     });
   }
 
   updateTime(event) {
     event.preventDefault();
-    // console.log(event.target.innerText);
     this.setState({
       time: event.target.innerText,
       // TODO - add date here as well
@@ -52,7 +54,7 @@ class Form extends React.Component {
   }
 
   renderSwitch() {
-    const { step, time } = this.state;
+    const { step, time, name, ign, discord, region } = this.state;
     switch (step) {
       case 1:
         return (
@@ -66,7 +68,15 @@ class Form extends React.Component {
         );
       case 2:
         return (
-          <div>hello2</div>
+          <ClientInfo
+            changeHandler={this.changeHandler}
+            name={name}
+            ign={ign}
+            discord={discord}
+            region={region}
+            next={this.nextStep}
+            prev={this.prevStep}
+          />
         );
       case 3:
         return (
