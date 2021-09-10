@@ -1,7 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AvailableTimes from './AvailableTimes';
+import Form from '../Form';
+import AvailableTimes from '../Form/AvailableTimes';
 import { times } from '../../../../db/times';
 
 const MODAL_STYLES = {
@@ -37,7 +38,8 @@ const Modal = ({ open, children, onClose }) => {
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <button style={BUTTON_STYLES} onClick={onClose}>Close Modal</button>
-        <AvailableTimes times={times} />
+        {/* <AvailableTimes times={times} /> */}
+        <Form />
       </div>
     </>,
     document.getElementById('portal')
