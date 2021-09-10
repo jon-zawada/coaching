@@ -1,6 +1,7 @@
 :root {
   --line-border-fill: #3498db;
   --line-border-empty: #e0e0e0;
+  --main-color: hsl(245, 72%, 46%);
 }
 
 body{
@@ -158,11 +159,10 @@ body{
 
 /************ FORM ************/
 .form-container {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .form-container .progress-container {
-  border: solid purple 5px;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -183,8 +183,8 @@ body{
   transition: 0.4s ease;
 }
 
-.progress {
-  background-color: var(--line-border-fill);;
+.progress-bar {
+  background-color: var(--main-color);;
   position: absolute;
   top: 50%;
   left: 0;
@@ -209,12 +209,12 @@ body{
 }
 
 .form-container .circle.active {
-  border-color: var(--line-border-fill);
-  color: black
+  border-color: var(--main-color);
+  color: black;
 }
 
 .form-container .btn {
-  background-color: var(--line-border-fill);
+  background-color: var(--main-color);
   color: #fff;
   border: 0;
   border-radius: 6px;
