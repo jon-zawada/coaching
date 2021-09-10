@@ -1,10 +1,12 @@
 import React from 'react';
 
-const ClientInfo = ({ changeHandler, name, ign, discord, region, next, prev }) => (
+const ClientInfo = ({ changeHandler, name, ign, discord, region, email, next, prev }) => (
   <div className="form2-container">
     <form>
       <label>Name</label>
       <input type="text" name="name" onChange={changeHandler} defaultValue={name} />
+      <label>Email</label>
+      <input type="text" name="email" onChange={changeHandler} defaultValue={email} />
       <label>League In Game Name</label>
       <input type="text" name="ign" onChange={changeHandler} defaultValue={ign} />
       <label>Discord</label>

@@ -1,6 +1,7 @@
 import React from 'react';
 import AvailableTimes from './AvailableTimes';
 import ClientInfo from './ClientInfo';
+import Confirm from './ConfirmInfo';
 import { times } from '../../../../db/times';
 
 class Form extends React.Component {
@@ -12,6 +13,7 @@ class Form extends React.Component {
       ign: '',
       discord: '',
       region: '',
+      email: '',
       date: '',
       time: '',
     };
@@ -54,7 +56,7 @@ class Form extends React.Component {
   }
 
   renderSwitch() {
-    const { step, time, name, ign, discord, region } = this.state;
+    const { step, time, name, ign, discord, region, email } = this.state;
     switch (step) {
       case 1:
         return (
@@ -73,6 +75,7 @@ class Form extends React.Component {
             name={name}
             ign={ign}
             discord={discord}
+            email={email}
             region={region}
             next={this.nextStep}
             prev={this.prevStep}
@@ -80,7 +83,15 @@ class Form extends React.Component {
         );
       case 3:
         return (
-          <div>foiwejfwe3</div>
+          <Confirm
+            time={time}
+            name={name}
+            ign={ign}
+            discord={discord}
+            region={region}
+            email={email}
+            prev={this.prevStep}
+          />
         );
       default:
         return null;
