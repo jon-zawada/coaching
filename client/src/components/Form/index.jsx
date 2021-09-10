@@ -1,4 +1,6 @@
 import React from 'react';
+import AvailableTimes from './AvailableTimes';
+import { times } from '../../../../db/times';
 
 class Form extends React.Component {
   constructor() {
@@ -11,10 +13,13 @@ class Form extends React.Component {
       time: '',
       discord: '',
     };
+    this.nextStep = this.nextStep.bind(this);
+    this.prevStep = this.prevStep.bind(this);
   }
 
   nextStep() {
     const { step } = this.state;
+    if (step === 3) return;
     this.setState({
       step: step + 1
     });
@@ -22,6 +27,7 @@ class Form extends React.Component {
 
   prevStep() {
     const { step } = this.state;
+    if (step === 0) return;
     this.setState({
       step: step - 1
     });
@@ -32,7 +38,7 @@ class Form extends React.Component {
     switch (step) {
       case 1:
         return (
-          <div>hi1</div>
+          <AvailableTimes times={times} />
         );
       case 2:
         return (
@@ -48,6 +54,7 @@ class Form extends React.Component {
   }
 
   render() {
+    const { step } = this.state;
     return (
       <div className="container">
         <div className="progress-container">
@@ -58,8 +65,8 @@ class Form extends React.Component {
           <div className="circle">4</div>
         </div>
         {this.renderSwitch()}
-        <button className="btn" id='prev' disabled>Prev</button>
-        <button className="btn" id='next'>Next</button>
+        <button className="btn" id='prev' onClick={this.prevStep} disabled={step === 1}>Prev</button>
+        <button className="btn" id='next' onClick={this.nextStep} disabled={step === 3}>Next</button>
     </div>
     );
   }
