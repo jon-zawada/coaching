@@ -15,6 +15,8 @@ class Form extends React.Component {
     };
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
+    this.updateTime = this.updateTime.bind(this);
   }
 
   nextStep() {
@@ -33,12 +35,34 @@ class Form extends React.Component {
     });
   }
 
+  changeHandler(event, prop) {
+    event.preventDefault();
+    this.setState({
+      [prop]: event.target.value
+    });
+  }
+
+  updateTime(event) {
+    event.preventDefault();
+    // console.log(event.target.innerText);
+    this.setState({
+      time: event.target.innerText,
+      // TODO - add date here as well
+    });
+  }
+
   renderSwitch() {
-    const { step } = this.state;
+    const { step, time } = this.state;
     switch (step) {
       case 1:
         return (
-          <AvailableTimes times={times} />
+          <AvailableTimes
+            times={times}
+            next={this.nextStep}
+            prev={this.prevStep}
+            updateTime={this.updateTime}
+            time={time}
+          />
         );
       case 2:
         return (
@@ -54,7 +78,6 @@ class Form extends React.Component {
   }
 
   render() {
-    const { step } = this.state;
     return (
       <div className="container">
         <div className="progress-container">
@@ -65,9 +88,7 @@ class Form extends React.Component {
           <div className="circle">4</div>
         </div>
         {this.renderSwitch()}
-        <button className="btn" id='prev' onClick={this.prevStep} disabled={step === 1}>Prev</button>
-        <button className="btn" id='next' onClick={this.nextStep} disabled={step === 3}>Next</button>
-    </div>
+      </div>
     );
   }
 }
