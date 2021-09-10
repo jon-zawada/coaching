@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Form from '../Form';
-import AvailableTimes from './AvailableTimes';
+import AvailableTimes from '../Form/AvailableTimes';
 import { times } from '../../../../db/times';
 
 const MODAL_STYLES = {
