@@ -100,18 +100,19 @@ class Form extends React.Component {
 
   render() {
     const { step } = this.state;
+    const percent = ((step - 1) / 2) * 100;
     return (
       <div className="form-container">
         <div className="progress-container">
-          <div className="progress" id="progress"></div>
+          <div className="progress" id="progress" style={{width: `${percent}%`}}></div>
           {/* <div className="circle active">1</div>
           <div className="circle">2</div>
           <div className="circle">3</div>
           <div className="circle">4</div> */}
           {[...Array(3)].map((item, index) => {
-            console.log(index, step);
+            // console.log(index, step);
             return (
-              <div className={index + 1 <= step ? "circle active" : "circle"}>{index + 1}</div>
+              <div className={index + 1 <= step ? "circle active" : "circle"} id={index * 123}>{index + 1}</div>
             );
           })}
         </div>

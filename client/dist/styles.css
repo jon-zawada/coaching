@@ -156,7 +156,7 @@ body{
   margin: 5px;
 }
 
-/* FORM */
+/************ FORM ************/
 .form-container {
   text-align: center;
 }
@@ -164,7 +164,7 @@ body{
 .form-container .progress-container {
   border: solid purple 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   position: relative;
   /* max-width: 100%;
   width: 100% */
@@ -190,7 +190,7 @@ body{
   left: 0;
   transform: translateY(-50%);
   height: 4px;
-  width: 10%;
+  width: 0%;
   z-index: -1;
   transition: 0.4s ease;
 }
