@@ -156,8 +156,9 @@ body{
   justify-content: space-between;
   position: relative;
   margin-bottom: 10px;
-  /* max-width: 100%;
-  width: 100% */
+  margin: auto;
+  margin-bottom: 3.5%;
+  width: 85%;
 }
 
 .progress-container::before {
@@ -224,7 +225,7 @@ body{
   cursor: not-allowed;
 }
 
-/* MODAL - FORM 1 */
+/* FORM 1 */
 
 .form1-container {
   display: flex;
@@ -277,4 +278,49 @@ body{
 .available-times li.active:active {
   scale: scale(0.98);
   background-color: var(--clicked-main-color);
+}
+
+/* FORM 2 */
+
+.form2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px red;
+}
+
+.form2-labels-list {
+  width: 50%;
+}
+
+.form2 .label-input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: solid 1px turquoise;
+}
+
+.label-input label, input {
+  margin: 5px;
+}
+
+.label-input input {
+  border: 1px solid var(--line-border-empty);
+  border-radius: 4px;
+  height: 20px;
+  width: 75%;
+}
+
+.form2 label {
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.form2 label::after {
+  content: "*";
+  color: red;
 }
