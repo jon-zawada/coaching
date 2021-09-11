@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const AvailableTimes = ({ times, time, next, updateTime }) => {
   const [activeIndex, setIndex] = useState(null);
@@ -8,22 +8,22 @@ const AvailableTimes = ({ times, time, next, updateTime }) => {
         {times.map((t, i) => {
           const className = i === activeIndex ? 'active' : null;
           return (
-            <li
-              key={i}
-              onClick={(e) => {
-                updateTime(e);
-                setIndex(i);
-              }}
-              className={className}
-            >
-              {t}
+            <li key={i} className={className}>
+              <div
+                onClick={(e) => {
+                  updateTime(e);
+                  setIndex(i);
+                }}
+              >
+                {t}
+              </div>
             </li>
           );
         })}
       </ul>
-      <button className="btn" onClick={next} disabled={time === ''}>Next</button>
+      <button type="button" className="btn" onClick={next} disabled={time === ''}>Next</button>
     </div>
   );
-}
+};
 
 export default AvailableTimes;

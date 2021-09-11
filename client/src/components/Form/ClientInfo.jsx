@@ -1,6 +1,15 @@
 import React from 'react';
 
-const ClientInfo = ({ changeHandler, name, ign, discord, region, email, next, prev }) => (
+const ClientInfo = ({
+  changeHandler,
+  name,
+  ign,
+  discord,
+  region,
+  email,
+  next,
+  prev
+}) => (
   <div className="form2-container">
     <form>
       <label>Name</label>
