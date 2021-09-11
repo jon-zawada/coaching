@@ -4,6 +4,7 @@
   --line-border-fill: #3498db;
   --line-border-empty: #e0e0e0;
   --main-color: hsl(245, 72%, 46%);
+  --clicked-main-color: hsl(245, 72%, 66%);
 }
 
 body{
@@ -260,4 +261,20 @@ body{
 .available-times li:hover {
   background-color: var(--main-color);
   color: white;
+  transform: scale(1.05);
+}
+
+.available-times li:active {
+  scale: scale(0.98);
+  background-color: var(--clicked-main-color);
+}
+
+.available-times li.active {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.available-times li.active:active {
+  scale: scale(0.98);
+  background-color: var(--clicked-main-color);
 }
