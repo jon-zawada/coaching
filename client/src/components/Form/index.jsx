@@ -1,5 +1,8 @@
 import React from 'react';
 import AvailableTimes from './AvailableTimes';
+import ClientInfo from './ClientInfo';
+import Confirm from './ConfirmInfo';
+import ProgressBar from './ProgressBar';
 import { times } from '../../../../db/times';
 
 class Form extends React.Component {
@@ -7,14 +10,18 @@ class Form extends React.Component {
     super();
     this.state = {
       step: 1,
+      name: '',
       ign: '',
+      discord: '',
       region: '',
+      email: '',
       date: '',
       time: '',
-      discord: '',
     };
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
+    this.updateTime = this.updateTime.bind(this);
   }
 
   nextStep() {
@@ -33,20 +40,59 @@ class Form extends React.Component {
     });
   }
 
+  changeHandler(event) {
+    event.preventDefault();
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  updateTime(event) {
+    event.preventDefault();
+    this.setState({
+      time: event.target.innerText,
+      // TODO - add date here as well
+    });
+  }
+
   renderSwitch() {
-    const { step } = this.state;
+    const { step, time, name, ign, discord, region, email } = this.state;
     switch (step) {
       case 1:
         return (
-          <AvailableTimes times={times} />
+          <AvailableTimes
+            times={times}
+            next={this.nextStep}
+            prev={this.prevStep}
+            updateTime={this.updateTime}
+            time={time}
+          />
         );
       case 2:
         return (
-          <div>hello2</div>
+          <ClientInfo
+            changeHandler={this.changeHandler}
+            name={name}
+            ign={ign}
+            discord={discord}
+            email={email}
+            region={region}
+            next={this.nextStep}
+            prev={this.prevStep}
+          />
         );
       case 3:
         return (
-          <div>foiwejfwe3</div>
+          <Confirm
+            time={time}
+            name={name}
+            ign={ign}
+            discord={discord}
+            region={region}
+            email={email}
+            prev={this.prevStep}
+          />
         );
       default:
         return null;
@@ -56,18 +102,10 @@ class Form extends React.Component {
   render() {
     const { step } = this.state;
     return (
-      <div className="container">
-        <div className="progress-container">
-          <div className="progress" id="progress"></div>
-          <div className="circle active">1</div>
-          <div className="circle">2</div>
-          <div className="circle">3</div>
-          <div className="circle">4</div>
-        </div>
+      <div className="form-container">
+        <ProgressBar step={step} />
         {this.renderSwitch()}
-        <button className="btn" id='prev' onClick={this.prevStep} disabled={step === 1}>Prev</button>
-        <button className="btn" id='next' onClick={this.nextStep} disabled={step === 3}>Next</button>
-    </div>
+      </div>
     );
   }
 }
