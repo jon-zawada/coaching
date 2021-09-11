@@ -7,7 +7,7 @@ const AvailableTimes = ({ times, time, next, updateTime }) => (
         <li key={i} onClick={updateTime}>{time}</li>
       ))}
     </ul>
-    <button className="btn" id='next' onClick={next} disabled={time === ''}>Next</button>
+    <button className="btn" onClick={next} disabled={time === ''}>Next</button>
   </div>
 );
 
