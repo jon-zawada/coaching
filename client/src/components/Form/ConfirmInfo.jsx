@@ -9,11 +9,11 @@ const ConfirmInfo = ({ time, name, ign, discord, region, email, prev }) => (
       <li>Summoner Name: {ign}</li>
       <li>Discord: {discord}</li>
       <li>Region: {region}</li>
-      <li>Session Time: {time}</li> 
+      <li>Session Time: {time}</li>
       {/* add date to time eventually */}
     </ul>
-    <button onClick={prev}>Prev</button>
-    <button>Confirm</button>
+    <button type="button" onClick={prev}>Prev</button>
+    <button type="button">Confirm</button>
   </div>
 );
 

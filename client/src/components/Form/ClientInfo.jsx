@@ -1,15 +1,6 @@
 import React from 'react';
 
-const ClientInfo = ({
-  changeHandler,
-  name,
-  ign,
-  discord,
-  region,
-  email,
-  next,
-  prev
-}) => (
+const ClientInfo = ({ changeHandler, name, ign, discord, region, email, next, prev }) => (
   <div className="form2-container">
     <form>
       <label>Name</label>
@@ -22,8 +13,8 @@ const ClientInfo = ({
       <input type="text" name="discord" onChange={changeHandler} defaultValue={discord} />
       <label>Region</label>
       <input type="text" name="region" onChange={changeHandler} defaultValue={region} />
-      <button className="btn" id='prev' onClick={prev}>Prev</button>
-      <button className="btn" id='next' onClick={next}>Next</button>
+      <button type="button" className="btn" onClick={prev}>Prev</button>
+      <button type="button" className="btn" onClick={next}>Next</button>
     </form>
   </div>
 );
